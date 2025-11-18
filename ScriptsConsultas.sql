@@ -24,3 +24,28 @@ select concat(e.first_name, ' ', e.last_name)
 from employees e;
 
 -----------------------------------------------------------
+
+--Utilizando a concatenação na tabela customers
+select concat(company_name ,'(',c.city ,')' )
+from customers c;
+
+-----------------------------------------------------------
+--Utilização do case when para a verificação e amostragem de dados
+
+select order_id, freight as frete, 
+--Criacao de nova coluna com o case 
+case when freight < 50 then 'Baixo'
+when freight >= 50
+and freight < 100 then 'Medio'
+else 'Alto' end as frete_nome
+from orders
+order by order_id asc;
+
+-----------------------------------------------------------
+
+select employee_id, concat(e.first_name, ' ', e.last_name), e.hire_date,
+case when extract(year from age('1998-01-01'::date, hire_date)) >= 5 then 'Senior'
+else 'Junior'end as level
+from employees e;
+
+
