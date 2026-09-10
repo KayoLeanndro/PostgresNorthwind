@@ -64,4 +64,11 @@ select * from employees e where e.reports_to is null;
 
 -----------------------------------------------------------
 
+--Utilizando subconsulta para coluna agregadora com group by
+select product_name, 
+unit_price ,
+(select avg(unit_price) from products) as preco_medio
+from products 
+group by product_name, unit_price 
+
 
